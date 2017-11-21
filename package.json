@@ -12,6 +12,7 @@
     "google-auth-library": "^0.11.0",
     "googleapis": "^22.2.0",
     "request-to-curl": "^0.1.1",
+    "sync": "^0.2.5",
     "ws": "^1.1.0"
   },
   "engines": {

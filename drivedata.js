@@ -26,6 +26,7 @@ fs.readFile('client_secret.json', function processClientSecrets(err, content) {
 
 
 
+
 /**
  * Create an OAuth2 client with the given credentials, and then execute the
  * given callback function.
@@ -127,7 +128,7 @@ function listFiles(auth) {
       //console.log('Files:');
       for (var i = 0; i < files.length; i++) {
         var file = files[i];
-        //console.log('%s (%s)', file.name, file.id);  //??used in export
+        console.log('%s (%s)', file.name, file.id);  //??used in export
         data.push(file.name, file.id);
       } 
       //console.log(data); 
