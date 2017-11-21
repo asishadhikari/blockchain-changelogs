@@ -17,9 +17,9 @@ done
 #################################
 
 if false
+then
 for i in {1..10}
 do
 	node drivedata.js
 done
-
 fi

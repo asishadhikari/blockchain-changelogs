@@ -1,16 +1,17 @@
 var http = require('http'),
-    querystring = require('querystring'); 
+    querystring = require('querystring');
+ 
 require('request-to-curl');
+
 var data = require('./drivedata.js');
-
-//get data 
-var postData = JSON.stringify(data);
-
-var myport = process.env.HTTP_PORT || 3001;
+console.log(data); 
+var postData = querystring.stringify({
+    'msg': 'Hello World!'
+});
  
 var options = {
     hostname: 'localhost',
-    port: myport,
+    port: 3001,
     path: '/mineBlock',
     method: 'POST',
     headers: {
@@ -18,8 +19,7 @@ var options = {
         'Content-Length': postData.length
     }
 };
-var i = 10;
-while (i < 10){
+ 
 var req = http.request(options, (res) => {
     console.log(req.toCurl());
 });
@@ -30,7 +30,4 @@ req.on('error', (e) => {
  
 // write data to request body 
 req.write(postData);
-i++;
 req.end();
-
-}

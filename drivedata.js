@@ -113,6 +113,9 @@ function listFiles(auth) {
     pageSize: 20,
     fields: "nextPageToken, files(id, name)"
   }, function(err, response) {
+    process.nextTick(function(){
+      module.exports='ashish';
+    })
     if (err) {
       console.log('The API returned an error: ' + err);
       return;
@@ -124,10 +127,16 @@ function listFiles(auth) {
       //console.log('Files:');
       for (var i = 0; i < files.length; i++) {
         var file = files[i];
-        console.log('%s (%s)', file.name, file.id);  //??used in export
+        //console.log('%s (%s)', file.name, file.id);  //??used in export
         data.push(file.name, file.id);
-      }
+      } 
+      //console.log(data); 
     }
+    return data;
+    console.log(data);
   });
   
 }
+
+//module.exports.drivedata = mydata;
+//////////////
