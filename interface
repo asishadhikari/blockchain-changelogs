@@ -1,0 +1,10 @@
+interface:
+getGenesisBlock();
+generateNextBlock(data); //generate block with data
+calculateHashForBlock(block);
+calculateHash(index, previousHash, timestamp, data);
+addBlock(block); // add block to block chain
+isValidNewBlock();
+replaceChain(newblockchain);
+getLatestBlock();
+
