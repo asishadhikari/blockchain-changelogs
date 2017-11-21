@@ -2,8 +2,8 @@ var http = require('http'),
     querystring = require('querystring'); 
 require('request-to-curl');
 var data = require('./drivedata.js');
-console.log(data);
- 
+
+//get data 
 var postData = JSON.stringify(data);
 
 var myport = process.env.HTTP_PORT || 3001;
@@ -18,7 +18,8 @@ var options = {
         'Content-Length': postData.length
     }
 };
- 
+var i = 10;
+while (i < 10){
 var req = http.request(options, (res) => {
     console.log(req.toCurl());
 });
@@ -29,5 +30,7 @@ req.on('error', (e) => {
  
 // write data to request body 
 req.write(postData);
+i++;
 req.end();
 
+}

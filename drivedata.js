@@ -2,7 +2,7 @@ var fs = require('fs');
 var readline = require('readline');
 var google = require('googleapis');
 var googleAuth = require('google-auth-library');
-
+var sync = require('sync');
 
 // If modifying these scopes, delete your previously saved credentials
 // at ~/.credentials/drive-nodejs-quickstart.json
@@ -105,7 +105,7 @@ function storeToken(token) {
  * @param {google.auth.OAuth2} auth An authorized OAuth2 client.
  */
 function listFiles(auth) {
-  var data =[];
+  var data = [];
   var service = google.drive('v3');
   //actual api call
   service.files.list({
@@ -124,13 +124,10 @@ function listFiles(auth) {
       //console.log('Files:');
       for (var i = 0; i < files.length; i++) {
         var file = files[i];
-        //console.log('%s (%s)', file.name, file.id);  //??used in export
+        console.log('%s (%s)', file.name, file.id);  //??used in export
         data.push(file.name, file.id);
       }
-      module.exports = data;
-      
     }
   });
   
 }
-
