@@ -3,8 +3,9 @@ var http = require('http'),
  
 require('request-to-curl');
 
-var data = require('./drivedata.js');
-console.log(data); 
+var data = require('./drivedata');
+
+ 
 var postData = querystring.stringify({
     'msg': 'Hello World!'
 });

@@ -1,0 +1,10 @@
+each compoenet of the path (formed by nested dirs) is dentry
+directories are also just files to a VFS
+file info is stored as inode at a different location 
+
+objects of FS:
+	<> Superblock represents file system 
+	<> inode represents specific file metadata
+	<> dentry represents directory entry - a single component of the path could be regular file or directory but a directory is also just a file
+	<> file represents an open file and is associated with a process
+
