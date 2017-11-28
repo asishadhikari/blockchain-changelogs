@@ -48,7 +48,9 @@ curl http://localhost:3001/blocks
 curl -H "Content-type:application/json" --data '{"data" : "Some data to the first block"}' http://localhost:3001/mineBlock
 ``` 
 or just run:
-```node browser-request.js```
+```
+node browser-request.js
+```
 
 ##### Add peer
 ```
