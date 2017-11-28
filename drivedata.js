@@ -1,3 +1,5 @@
+/* Credit: Google inc : samples for API usage */
+
 var fs = require('fs');
 var readline = require('readline');
 var google = require('googleapis');
@@ -113,7 +115,7 @@ function listFiles(auth) {
     }
     var files = response.files;
     if (files.length == 0) {
-      console.log('No files found.');
+      console.log('No files foun.d');
     } else {
       console.log('Files:');
       for (var i = 0; i < files.length; i++) {

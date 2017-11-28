@@ -1,3 +1,9 @@
+/* Author : Ashish Adhikari
+            BSc. Computer Science, 
+                Howard University
+credit:
+    Lauri Hartikka :github.com/lhartikk for naivechain
+*/
 'use strict'; 
 var CryptoJS = require("crypto-js"); 
 var express = require("express");
