@@ -121,8 +121,10 @@ function listFiles(auth) {
       for (var i = 0; i < files.length; i++) {
         var file = files[i];
         //return this data as pushed
-        //console.log('%s (%s)', file.name, file.id);
+        console.log('%s (%s)', file.name, file.id);
       }
     }
   });
 }
+
+module.exports.listFiles 
