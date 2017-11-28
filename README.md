@@ -1,27 +1,35 @@
-# Naivechain - a blockchain implementation in 200 lines of code
+Author: Ashish Adhikari
+			Howard University
+credits: Lauri Hartikka :github.com/lhartikk
+
+# Blockchain implementation to track google Drive files
 
 ### Motivation
-All the current implementations of blockchains are tightly coupled with the larger context and problems they (e.g. Bitcoin or Ethereum) are trying to solve. This makes understanding blockchains a necessarily harder task, than it must be. Especially source-code-wisely. This project is an attempt to provide as concise and simple implementation of a blockchain as possible.
+Non repudiation is an important requirement in any functional system comprising of multiple interacting entities. As such, to provide an easily verifiable log of modifications of important files, this project is a blockchain based implementation to securely and transparently store modifications made to files in form of log. 
 
- 
-### What is blockchain
-[From Wikipedia](https://en.wikipedia.org/wiki/Blockchain_(database)) : Blockchain is a distributed database that maintains a continuously-growing list of records called blocks secured from tampering and revision.
+As a proof of concept, this project makes use of google drive APIs as made available through **googleapis**  and **google-auth-library** npm packages in order to store 20 items from the validated google drive.
 
-### Key concepts of Naivechain
-Check also [this blog post](https://medium.com/@lhartikk/a-blockchain-in-200-lines-of-code-963cc1cc0e54#.dttbm9afr5) for a more detailed overview of the key concepts
+### Architecture
 * HTTP interface to control the node
 * Use Websockets to communicate with other nodes (P2P)
 * Super simple "protocols" in P2P communication
 * Data is not persisted in nodes
 * No proof-of-work or proof-of-stake: a block can be added to the blockchain without competition
 
-
-![alt tag](naivechain_blockchain.png)
-
-![alt tag](naivechain_components.png)
+### Dependencies:
+* Nodejs
+* npm packages:
+  * body-parser : 1.15.2
+	* crypto-js : 3.1.6
+	* express : 4.11.1
+	* google-auth-library : 0.11.0
+	* googleapis : 22.2.0
+	* request-to-curl : 0.1.1
+	* sync : 0.2.5
+	* ws : 1.1.0
 
 ### Quick start
-(set up two connected nodes and mine 1 block)
+
 ```
 npm install
 HTTP_PORT=3001 P2P_PORT=6001 npm start
@@ -29,13 +37,21 @@ HTTP_PORT=3002 P2P_PORT=6002 PEERS=ws://localhost:6001 npm start
 curl -H "Content-type:application/json" --data '{"data" : "Some data to the first block"}' http://localhost:3001/mineBlock
 ```
 
-### Quick start with Docker
-(set up three connected nodes and mine a block)
-###
-```sh
-docker-compose up
-curl -H "Content-type:application/json" --data '{"data" : "Some data to the first block"}' http://localhost:3001/mineBlock
-```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ### HTTP API
 ##### Get blockchain
