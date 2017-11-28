@@ -25,6 +25,7 @@ As a proof of concept, this project makes use of google drive APIs as made avail
 	* request-to-curl : 0.1.1
 	* sync : 0.2.5
 	* ws : 1.1.0
+	* sleep: 5.1.1
 
 ### Discretion:
 When adding a new node to the network, ```PEERS``` must always be explicitly defined. For instance, ```PEERS=ws://localhost:6001,ws://localhost:6002``` would be added to specifications when initialising a third node with peers on socket 6001 and 6002. If not, add peer For more information, see the initiaisation of second node in Quick start.   
@@ -38,21 +39,20 @@ HTTP_PORT=3002 P2P_PORT=6002 PEERS=ws://localhost:6001 npm start
 curl -H "Content-type:application/json" --data '{"data" : "Some data to the first block"}' http://localhost:3001/mineBlock
 ```
 
-### HTTP API
-##### Get blockchain
+### HTTP API:
+Use the following APIs as provided by the express app to interact with the blockchain maintained in the p2p network:
+##### View the data of the blockchain
 ```
 curl http://localhost:3001/blocks
 ```
-##### Create block
-```
-curl -H "Content-type:application/json" --data '{"data" : "Some data to the first block"}' http://localhost:3001/mineBlock
-``` 
-or just run:
+##### Add 10 most recent changed files to block
+
 ```
 node browser-request.js
 ```
 
 ##### Add peer
+note that peer must be populated for all nodes (except the first node)
 ```
 curl -H "Content-type:application/json" --data '{"peer" : "ws://localhost:6001"}' http://localhost:3001/addPeer
 ```
