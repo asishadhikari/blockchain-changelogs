@@ -4,14 +4,13 @@
 ### Motivation:
 Non repudiation is an important requirement in any functional system comprising of multiple interacting entities. As such, to provide an easily verifiable log of modifications of important files, this project is a blockchain based implementation to securely and transparently store modifications made to files in form of log. 
 
-As a proof of concept, this project makes use of google drive APIs as made available through **googleapis**  and **google-auth-library** npm packages in order to store 20 items from the validated google drive.
+As a proof of concept, this project makes use of google drive APIs as made available through **googleapis**  and **google-auth-library** npm packages in order to store 20 items from the validated google driven into a P2P based blockchain system. However, it must be noted that this project does not provide for mechanisms to provide proof of stake or proof of work. Consequently, any practical use must address this issue. 
 
 ### Architecture:
 * HTTP interface to control the node
 * Use Websockets to communicate with other nodes (P2P)
 * Super simple "protocols" in P2P communication
 * Data is not persisted in nodes
-* No proof-of-work or proof-of-stake: a block can be added to the blockchain without competition
 
 ### Dependencies:
 * Nodejs
