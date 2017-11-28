@@ -4,6 +4,8 @@ var fs = require('fs');
 var readline = require('readline');
 var google = require('googleapis');
 var googleAuth = require('google-auth-library');
+var data = [];
+var request = require('request');
 
 // If modifying these scopes, delete your previously saved credentials
 // at ~/.credentials/drive-nodejs-quickstart.json
@@ -103,6 +105,7 @@ function storeToken(token) {
  * @param {google.auth.OAuth2} auth An authorized OAuth2 client.
  */
 function listFiles(auth) {
+  var data = [];
   var service = google.drive('v3');
   service.files.list({
     auth: auth,
@@ -121,10 +124,38 @@ function listFiles(auth) {
       for (var i = 0; i < files.length; i++) {
         var file = files[i];
         //return this data as pushed
-        console.log('%s (%s)', file.name, file.id);
+        data.push('%s (%s)', file.name, file.id);
+        console.log('%s (%s)', file.name, file.id)
       }
+      request({method:'POST', url:'http://localhost:3001/mineBlock', json:{data:data}});
     }
-  });
+   });
 }
 
-module.exports.listFiles 
+
+const willExportData = new Promise(
+    (resolve, reject) => { // fat arrow
+        if (data.length!=0) {
+            const exportMe = data;
+            resolve(exportMe);
+        }
+    }
+);
+
+
+const exportData = function(exportMe){
+  const finalExport = exportMe;
+  return Promise.resolve(finalExport);
+};
+
+
+
+
+module.exports.getData = function(){
+    return willExportData
+      .then(exportData)
+      .then(function(){
+        console.log("THe data is here");
+        return data;
+      });
+  };
