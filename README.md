@@ -1,7 +1,7 @@
 # Blockchain implementation to track google Drive files
 
-###Author: Ashish Adhikari, Howard University
-###Credits: Lauri Hartikka :github.com/lhartikk
+### Author: Ashish Adhikari, Howard University
+### Credits: Lauri Hartikka :github.com/lhartikk
 ### Motivation
 Non repudiation is an important requirement in any functional system comprising of multiple interacting entities. As such, to provide an easily verifiable log of modifications of important files, this project is a blockchain based implementation to securely and transparently store modifications made to files in form of log. 
 
