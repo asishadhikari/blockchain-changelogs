@@ -40,7 +40,8 @@ var initHttpServer = () => {
 
     app.get('/blocks', (req, res) => res.send(JSON.stringify(blockchain)));
     app.post('/mineBlock', (req, res) => {
-        var newBlock = generateNextBlock(req.body.data);
+        console.log("Request contains",req);
+        var newBlock = generateNextBlock(req.body);
         addBlock(newBlock);
         broadcast(responseLatestMsg());
         console.log('block added: ' + JSON.stringify(newBlock));
@@ -96,7 +97,7 @@ var isValidNewBlock = (newBlock, previousBlock) => {
         console.log('invalid index');
         return false;
     } else if (previousBlock.hash !== newBlock.previousHash) {
-        console.log('invalid previoushash');
+        console.log('invalid prveioushash');
         return false;
     } else if (calculateHashForBlock(newBlock) !== newBlock.hash) {
         console.log(typeof (newBlock.hash) + ' ' + typeof calculateHashForBlock(newBlock));
@@ -139,6 +140,7 @@ var initMessageHandler = (ws) => {
 };
 var connectToPeers = (newPeers) => {
     newPeers.forEach((peer) => {
+        //check must be done to ensure not already connected
         var ws = new WebSocket(peer);
         ws.on('open', () => initConnection(ws));
         ws.on('error', () => {
@@ -212,3 +214,5 @@ var broadcast = (message) => sockets.forEach(socket => write(socket, message));
 connectToPeers(initialPeers);
 initHttpServer();
 initP2PServer();
+
+
