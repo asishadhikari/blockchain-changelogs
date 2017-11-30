@@ -124,7 +124,7 @@ function listFiles(auth) {
       for (var i = 0; i < files.length; i++) {
         var file = files[i];
         //return this data as pushed
-        data.push('%s (%s)', file.name, file.id);
+        data.push(file.name, file.id);
         console.log('%s (%s)', file.name, file.id)
       }
       request({method:'POST', url:'http://localhost:3001/mineBlock', json:{data:data}});
